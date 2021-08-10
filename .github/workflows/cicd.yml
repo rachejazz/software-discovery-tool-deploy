@@ -1,0 +1,6 @@
+name: Send TSC meeting agenda to email list
+on:
+  issues:
+    types: [opened]
+jobs:
+  build:
