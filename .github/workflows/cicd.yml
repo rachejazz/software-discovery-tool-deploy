@@ -17,6 +17,7 @@ jobs:
         script: |
           . init.sh
           cd /opt/software-discovery-tool-deploy
+          git checkout main
           git pull --recurse-submodules
           git checkout remotes/origin/deploy1
           sudo cp -r software-discovery-tool/ ../software-discovery-tool/
