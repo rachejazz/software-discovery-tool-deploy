@@ -18,6 +18,7 @@ jobs:
           . init.sh
           cd /opt/software-discovery-tool-deploy
           git pull --recurse-submodules
+          git checkout remotes/origin/deploy1
           sudo cp -r software-discovery-tool/ ../software-discovery-tool/
           sudo chown -R apache:apache /opt/software-discovery-tool
           sudo -u apache /opt/software-discovery-tool/bin/config_build.py
