@@ -1,6 +1,24 @@
-name: Send TSC meeting agenda to email list
+name: Test Deploy SDT
 on:
-  issues:
-    types: [opened]
+  push:
+    branches: deploy1
 jobs:
+
   build:
+    name: Deploy direct
+    runs-on: ubuntu-latest
+    steps:
+    - name: ssh and pull and restart
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        script: |
+          . init.sh
+          cd /opt/software-discovery-tool-deploy
+          git pull --recurse-submodules
+          sudo cp -r software-discovery-tool ../software-discovery-tool
+          sudo chown -R apache:apache /opt/software-discovery-tool
+          sudo -u apache /opt/software-discovery-tool/bin/config_build.py
+          sudo apachectl restart
