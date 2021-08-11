@@ -1,7 +1,7 @@
 name: Test Deploy SDT
 on:
   push:
-    branches: deploy1
+    branches: [ deploy1 ]
 jobs:
 
   build:
