@@ -5,7 +5,7 @@ on:
 jobs:
 
   build:
-    name: Deploy direct
+    name: Deploy directly
     runs-on: ubuntu-latest
     steps:
     - name: ssh and pull and restart
