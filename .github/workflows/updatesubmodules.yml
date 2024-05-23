@@ -15,6 +15,6 @@ jobs:
         script: |
           cd /opt/software-discovery-tool-deploy
           git checkout -b "$(date +%b%d)"
-          git pull --recurse-submodules
+          git pull --recurse-submodules origin main
           git submodule update --remote --recursive
           git commit -sam "Auto updated submodule references" && git push origin "$(date +%b%d)" || echo "No changes to commit"
