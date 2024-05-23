@@ -1,6 +1,7 @@
 name: Sync submodules
 on: workflow_dispatch
 jobs:
+
   repo_sync:
     name: Sync with Main repo
     runs-on: ubuntu-latest
