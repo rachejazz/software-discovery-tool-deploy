@@ -9,11 +9,11 @@ jobs:
     - name: ssh and git module update
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        script: |
-          cd /opt/software-discovery-tool-deploy
-          git pull --recurse-submodules
-          git submodule update --remote --recursive
-          git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
+#        host: ${{ secrets.HOST }}
+#        username: ${{ secrets.USERNAME }}
+#        key: ${{ secrets.KEY }}
+        script: echo hi
+#          cd /opt/software-discovery-tool-deploy
+#          git pull --recurse-submodules
+#          git submodule update --remote --recursive
+#          git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
