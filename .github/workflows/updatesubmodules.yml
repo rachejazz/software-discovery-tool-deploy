@@ -1,18 +1,18 @@
 name: Sync submodules
 on: workflow_dispatch
 jobs:
- sync:
+ repo_sync:
   name: Sync with Main repo
   runs-on: ubuntu-latest
   steps:
-  - name: ssh and pull and restart
-    uses: appleboy/ssh-action@master
-    with:
-  	 host: ${{ secrets.HOST }}
-  	 username: ${{ secrets.USERNAME }}
-  	 key: ${{ secrets.KEY }}
-  	 script: |
-  	  cd /opt/software-discovery-tool-deploy
-  	  git pull --recurse-submodules
-  	  git submodule update --remote --recursive
-  	  git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
+   - name: ssh and git module update
+     uses: appleboy/ssh-action@master
+     with:
+   	  host: ${{ secrets.HOST }}
+   	  username: ${{ secrets.USERNAME }}
+   	  key: ${{ secrets.KEY }}
+   	 run: |
+   	  cd /opt/software-discovery-tool-deploy
+   	  git pull --recurse-submodules
+   	  git submodule update --remote --recursive
+   	  git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
