@@ -17,5 +17,5 @@ jobs:
           git checkout -b "$(date +%b%d)"
           git pull --recurse-submodules origin main
           git submodule update --remote --recursive
-          git remote add git_update https://${{ secrets.SDT_USER_PUSH }}:${{ secrets.SDT_PAT_PUSH }}@github.com/openmainframeproject/software-discovery-tool-deploy.git
+          git remote add git_update https://${{ secrets.SDT_USER_PUSH }}:${{ secrets.SDT_PAT_PUSH }}@github.com/rachejazz/software-discovery-tool-deploy.git
           git commit -sam "Auto updated submodule references" && git push git_update "$(date +%b%d)" || echo "No changes to commit"
