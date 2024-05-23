@@ -16,4 +16,4 @@ jobs:
           cd /opt/software-discovery-tool-deploy
           git pull --recurse-submodules
           git submodule update --remote --recursive
-          git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
+          git commit -sam "Auto updated submodule references" && git push origin submodule-updated-"$(date +%s)" || echo "No changes to commit"
