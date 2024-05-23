@@ -2,7 +2,7 @@ name: Sync submodules
 on: workflow_dispatch
 jobs:
 
-	build:
+	sync:
 		name: Sync with Main repo
 		runs-on: ubuntu-latest
 		steps:
@@ -13,6 +13,7 @@ jobs:
 			username: ${{ secrets.USERNAME }}
 			key: ${{ secrets.KEY }}
 			script: |
-			  git pull --recurse-submodules
-			  git submodule update --remote --recursive
-			  git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
+				cd /opt/software-discovery-tool-deploy
+				git pull --recurse-submodules
+				git submodule update --remote --recursive
+				git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
