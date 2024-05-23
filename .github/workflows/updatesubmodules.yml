@@ -15,4 +15,4 @@ jobs:
 		script: |
 		  git pull --recurse-submodules
 		  git submodule update --remote --recursive
-		  git commit -am "Auto updated submodule references" && git push || echo "No changes to commit"
+		  git commit -sam "Auto updated submodule references" && git push || echo "No changes to commit"
