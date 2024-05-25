@@ -14,11 +14,25 @@ jobs:
         key: ${{ secrets.KEY }}
         script: |
           cd /opt/software-discovery-tool-deploy
-          git checkout -b "$(date +%b%d)"
+          git checkout -b submodule-update
           cd /opt/software-discovery-tool-deploy/software-discovery-tool
           git checkout master
           git pull origin master
           cd /opt/software-discovery-tool-deploy
           git remote remove git_update
           git remote add git_update https://${{ secrets.SDT_USER_PUSH }}:${{ secrets.SDT_PAT_PUSH }}@github.com/rachejazz/software-discovery-tool-deploy.git
-          git commit -sam "Auto updated submodule references" && git push git_update "$(date +%b%d)" || echo "No changes to commit"
+          git commit -sam "Auto updated submodule references" && git push git_update submodule-update || echo "No changes to commit"
+    
+    - name: Create Pull Request
+      id: cpr
+      uses: peter-evans/create-pull-request@v6
+      with:
+        token: ${{ secrets.SDT_PAT_PUSH }}
+        commit-message: submodule update
+        author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+        signoff: true
+        branch: submodule-update
+        delete-branch: true
+        title: '[Automated] Submodule update'
+        reviewers: rachejazz
+        draft: false
