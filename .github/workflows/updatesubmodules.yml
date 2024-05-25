@@ -27,6 +27,7 @@ jobs:
       id: cpr
       uses: peter-evans/create-pull-request@v6
       with:
+        pull-request-url: https://github.com/rachejazz/software-discovery-tool-deploy/
         token: ${{ secrets.SDT_PAT_PUSH }}
         commit-message: submodule update
         author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
