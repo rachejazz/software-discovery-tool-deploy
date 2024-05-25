@@ -13,13 +13,14 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         script: |
-          cd /opt/software-discovery-tool-deploy
-          git checkout -b "$(date +%b%d)"
+           echo hi
+#          cd /opt/software-discovery-tool-deploy
+#          git checkout -b "$(date +%b%d)"
 #          git pull --recurse-submodules origin main
 #          git submodule update --remote --recursive
-          cd /opt/software-discovery-tool
-          git pull origin master
-          cd /opt/software-discovery-tool
-          git remote remove git_update
-          git remote add git_update https://${{ secrets.SDT_USER_PUSH }}:${{ secrets.SDT_PAT_PUSH }}@github.com/rachejazz/software-discovery-tool-deploy.git
-          git commit -sam "Auto updated submodule references" && git push git_update "$(date +%b%d)" || echo "No changes to commit"
+#          cd /opt/software-discovery-tool
+#          git pull origin master
+#          cd /opt/software-discovery-tool
+#          git remote remove git_update
+#          git remote add git_update https://${{ secrets.SDT_USER_PUSH }}:${{ secrets.SDT_PAT_PUSH }}@github.com/rachejazz/software-discovery-tool-deploy.git
+#          git commit -sam "Auto updated submodule references" && git push git_update "$(date +%b%d)" || echo "No changes to commit"
